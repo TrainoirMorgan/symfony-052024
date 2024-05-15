@@ -3,14 +3,20 @@
 namespace App\Entity;
 
 use App\Entity\Product;
+use App\Entity\Trait\CreatedAtTrait;
+use App\Entity\Trait\UpdatedAtTrait;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Category implements \Stringable
 {
+
+    use CreatedAtTrait, UpdatedAtTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,6 +30,10 @@ class Category implements \Stringable
      */
     #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'category')]
     private Collection $products;
+
+   
+
+   
 
     public function __construct()
     {
@@ -80,4 +90,9 @@ class Category implements \Stringable
 
         return $this;
     }
+
+    
+
+
+    
 }
