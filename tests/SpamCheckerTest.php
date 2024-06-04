@@ -2,13 +2,13 @@
 
 namespace App\Tests;
 
-use App\SpamChecker;
 use App\Entity\Comment;
-use PHPUnit\Framework\TestCase;
+use App\SpamChecker;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
-use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Component\HttpClient\Response\MockResponse;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class SpamCheckerTest extends TestCase
 {
@@ -30,6 +30,7 @@ class SpamCheckerTest extends TestCase
         $score = $checker->getSpamScore($comment, $context);
         static::assertSame($expectedScore, $score);
     }
+
     /** @return iterable<string, array<mixed>> */
     public static function provideComments(): iterable
     {

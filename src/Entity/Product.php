@@ -2,17 +2,18 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\CreatedAtTrait;
+use App\Entity\Trait\UpdatedAtTrait;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Trait\CreatedAtTrait;
-use App\Entity\Trait\UpdatedAtTrait;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 class Product implements \Stringable
 {
-    use CreatedAtTrait, UpdatedAtTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -31,16 +32,11 @@ class Product implements \Stringable
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-
-
-
-
-   
-  
     public function __toString(): string
     {
-       return $this->name;
+        return $this->name;
     }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -100,10 +96,4 @@ class Product implements \Stringable
 
         return $this;
     }
-
-    
-
-    
-
-    
 }

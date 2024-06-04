@@ -14,7 +14,7 @@ class ConferenceControllerTest extends WebTestCase
         static::assertSelectorTextContains('h2', 'Give your feedback!');
     }
 
-    public function testCommentSubmission() : void
+    public function testCommentSubmission(): void
     {
         $client = static::createClient();
         $client->request('GET', '/conference/amsterdam-2019');
@@ -40,6 +40,4 @@ class ConferenceControllerTest extends WebTestCase
         static::assertSelectorTextContains('h2', 'Amsterdam 2019');
         static::assertSelectorExists('div:contains("There are 1 comments")');
     }
-
- 
 }

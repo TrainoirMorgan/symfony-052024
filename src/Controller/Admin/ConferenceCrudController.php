@@ -7,7 +7,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ConferenceCrudController extends AbstractCrudController
@@ -17,7 +16,6 @@ class ConferenceCrudController extends AbstractCrudController
         return Conference::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
@@ -27,5 +25,4 @@ class ConferenceCrudController extends AbstractCrudController
         yield BooleanField::new('isInternational');
         yield AssociationField::new('comments')->hideOnForm();
     }
-    
 }

@@ -32,12 +32,11 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface, \Strin
      */
     #[ORM\Column]
     private ?string $password = null;
-    
+
     public function __toString(): string
     {
         return $this->username;
     }
-
 
     public function getId(): ?int
     {

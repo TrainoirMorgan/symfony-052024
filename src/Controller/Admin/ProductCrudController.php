@@ -4,16 +4,16 @@ namespace App\Controller\Admin;
 
 use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\NumericFilter;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ProductCrudController extends AbstractCrudController
 {
@@ -21,6 +21,7 @@ class ProductCrudController extends AbstractCrudController
     {
         return Product::class;
     }
+
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
@@ -34,9 +35,9 @@ class ProductCrudController extends AbstractCrudController
         return $filters
             ->add(EntityFilter::new('category'))
             ->add(NumericFilter::new('price'))
-            ;
+        ;
     }
-    
+
     // public function configureFields(string $pageName): iterable
     // {
     //     return [
@@ -48,7 +49,7 @@ class ProductCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('name');
-        
+
         yield MoneyField::new('price')
         ->setCurrency('EUR')
         ->setStoredAsCents(false);
@@ -56,5 +57,4 @@ class ProductCrudController extends AbstractCrudController
         yield TextareaField::new('description')
             ->hideOnIndex();
     }
-    
 }
