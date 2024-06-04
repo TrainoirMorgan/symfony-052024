@@ -7,7 +7,6 @@ tests:
 	APP_ENV=test symfony console doctrine:fixtures:load -n
   	APP_ENV=dev symfony php bin/phpunit $(MAKECMDGOALS)
 
-
 up:
 	docker compose up -d
 	symfony serve -d

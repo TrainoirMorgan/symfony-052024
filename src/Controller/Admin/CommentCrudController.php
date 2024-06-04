@@ -51,5 +51,6 @@ class CommentCrudController extends AbstractCrudController
         ->setLabel('Photo');
         yield DateTimeField::new('createdAt')
             ->hideOnForm();
+        yield TextField::new('state');
     }
 }
